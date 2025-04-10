@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Orders{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Сгенерировать Приказ</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="organization_name" class="form-label">Название организации</label>
+            <input type="text" class="form-control" id="organization_name" name="organization_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="inn" class="form-label">ИНН</label>
+            <input type="text" class="form-control" id="inn" name="inn" required>
+        </div>
+        <div class="mb-3">
+            <label for="ogrn" class="form-label">ОГРН</label>
+            <input type="text" class="form-control" id="ogrn" name="ogrn" required>
+        </div>
+        <div class="mb-3">
+            <label for="responsible_person" class="form-label">Ответственное лицо</label>
+            <input type="text" class="form-control" id="responsible_person" name="responsible_person" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Юридический адрес</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Сгенерировать Приказ</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Заполнение шаблона{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Заполнение шаблона: {{ template.template_name }}</h2>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.template_id }}
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Поле</th>
+                            <th>Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for field in form %}
+                            {% if field.name != 'template_id' %}
+                                <tr>
+                                    <td><label for="{{ field.id_for_label }}">{{ field.label }}</label></td>
+                                    <td>{{ field }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Скачать заполненный документ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

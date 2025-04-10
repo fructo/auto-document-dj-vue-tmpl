@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Generate Acts{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action active" id="list-org-data-list" data-bs-toggle="list" href="#list-org-data" role="tab" aria-controls="org-data">Данные об организации</a>
+                <a class="list-group-item list-group-item-action" id="list-resp-persons-list" data-bs-toggle="list" href="#list-resp-persons" role="tab" aria-controls="resp-persons">Ответственные лица</a>
+            </div>
+        </div>
+        <!-- Form content -->
+        <div class="col-md-9">
+            <form method="post">
+                {% csrf_token %}
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="list-org-data" role="tabpanel" aria-labelledby="list-org-data-list">
+                        <h3>Данные об организации</h3>
+                        <div class="mb-3">
+                            <label for="organization_name" class="form-label">Название организации</label>
+                            <input type="text" class="form-control" id="organization_name" name="organization_name" value="{{ request.POST.organization_name }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inn" class="form-label">ИНН</label>
+                            <input type="text" class="form-control" id="inn" name="inn" value="{{ request.POST.inn }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ogrn" class="form-label">ОГРН</label>
+                            <input type="text" class="form-control" id="ogrn" name="ogrn" value="{{ request.POST.ogrn }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Юридический адрес</label>
+                            <input type="text" class="form-control" id="address" name="address" value="{{ request.POST.address }}" required>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list-resp-persons" role="tabpanel" aria-labelledby="list-resp-persons-list">
+                        <h3>Ответственные лица</h3>
+                        <div class="mb-3">
+                            <label for="responsible_person" class="form-label">ФИО</label>
+                            <input type="text" class="form-control" id="responsible_person" name="responsible_person" value="{{ request.POST.responsible_person }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="position" class="form-label">Должность</label>
+                            <input type="text" class="form-control" id="position" name="position" value="{{ request.POST.position }}" required>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Сгенерировать Акт</button>
+            </form>
+            {% if form.errors %}
+                <div class="alert alert-danger mt-3">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}AutoDocx{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="text-center">
+        <h1>Добро пожаловать в AutoDocx</h1>
+        <p class="lead mt-4">AutoDocx - ваш лучший помощник в автоматизации создания документов.
+        Наша платформа позволяет легко и быстро генерировать документы на основе ваших шаблонов. Экономьте время и повышайте эффективность с AutoDocx.</p>
+        <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg mt-3">Перейти в личный кабинет</a>
+    </div>
+</div>
+{% endblock %}

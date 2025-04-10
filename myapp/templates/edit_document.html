@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Document{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Редактировать документ</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-org-data" role="tabpanel" aria-labelledby="list-org-data-list">
+                <h3>Данные об организации</h3>
+                <div class="mb-3">
+                    <label for="organization_name" class="form-label">Название организации</label>
+                    <input type="text" class="form-control" id="organization_name" name="organization_name" value="{{ form.organization_name.value }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="inn" class="form-label">ИНН</label>
+                    <input type="text" class="form-control" id="inn" name="inn" value="{{ form.inn.value }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ogrn" class="form-label">ОГРН</label>
+                    <input type="text" class="form-control" id="ogrn" name="ogrn" value="{{ form.ogrn.value }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Юридический адрес</label>
+                    <input type="text" class="form-control" id="address" name="address" value="{{ form.address.value }}" required>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="list-resp-persons" role="tabpanel" aria-labelledby="list-resp-persons-list">
+                <h3>Ответственные лица</h3>
+                <div class="mb-3">
+                    <label for="responsible_person" class="form-label">ФИО</label>
+                    <input type="text" class="form-control" id="responsible_person" name="responsible_person" value="{{ form.responsible_person.value }}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="position" class="form-label">Должность</label>
+                    <input type="text" class="form-control" id="position" name="position" value="{{ form.position.value }}" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Сохранить изменения</button>
+    </form>
+</div>
+{% endblock %}

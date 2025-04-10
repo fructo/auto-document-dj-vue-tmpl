@@ -1,0 +1,11 @@
+Django==4.2.13
+asgiref==3.8.1
+sqlparse==0.5.0
+jinja2==3.1.4
+MarkupSafe==2.1.5
+lxml==5.2.2
+babel==2.15.0
+typing_extensions==4.12.2
+python-docx==1.1.2
+docxtpl==0.17.0
+docxcompose==1.4.0
